@@ -1,0 +1,116 @@
+Marketplace Master Specification
+Dr. William Triplett
+
+SITE: drwilliamtriplett.netlify.app
+PLATFORM: Visual Studio Code (component-based development)
+DEPLOYMENT: Netlify
+CHECKOUT: External (Stripe, Gumroad, Printful/Printify, Calendly)
+
+==================================================
+ONE-PARAGRAPH DEVELOPER BRIEF
+==================================================
+This project implements a comprehensive Marketplace for Dr. William Triplett’s platform, showcasing books, digital media (audio, video, podcasts), print-on-demand apparel, courses, consulting services, speaking engagements, organizational development, faculty services, and a membership program. The site should display product descriptions and pricing while routing all transactions through external platforms. Development should follow a modular, reusable component-based approach suitable for Visual Studio Code, ensure mobile responsiveness, and deploy through Netlify.
+
+==================================================
+MARKETPLACE STRUCTURE
+==================================================
+/marketplace
+/marketplace/books
+/marketplace/audio
+/marketplace/video
+/marketplace/podcasts
+/marketplace/apparel
+/marketplace/courses
+/marketplace/toolkits
+/marketplace/consulting
+/marketplace/speaking
+/marketplace/organizational-development
+/marketplace/faculty-services
+/marketplace/membership
+
+==================================================
+BOOKS & PUBLICATIONS
+==================================================
+Sacred Resistance
+• eBook: $29.99
+• Paperback (Print-on-Demand): $39.99
+
+==================================================
+AUDIO PRODUCTS
+==================================================
+• Sacred Resistance – Audio Reflections Series: $59
+• Leadership Ethics Audio Course: $149
+
+==================================================
+VIDEO PRODUCTS
+==================================================
+• Ethical Leadership in a Digital Age (Video Course): $349
+• Sacred Resistance Lecture Series: $199
+
+==================================================
+PODCASTS
+==================================================
+• Sacred Resistance Podcast (Premium)
+  - $15/month
+  - $149/year
+• Podcast Archive Access: $79
+
+==================================================
+PRINT-ON-DEMAND APPAREL
+==================================================
+Sacred Resistance Collection (T-Shirts)
+• “Sacred Resistance” – $34.99
+• “Faith. Justice. Action.” – $34.99
+• “Theology is Public Work” – $34.99
+
+==================================================
+COURSES & TOOLKITS
+==================================================
+• Ethical Leadership in a Digital Age: $299
+• Human-Centered Leadership Masterclass: $399
+• Ethical Decision-Making Toolkit: $129
+• Leadership Assessment Framework: $149
+
+==================================================
+CONSULTING SERVICES
+==================================================
+• Leadership Strategy Session (60 minutes): $350
+• Organizational Ethics & Culture Audit: Starting at $3,500
+
+==================================================
+SPEAKING ENGAGEMENTS
+==================================================
+• Keynote Address: Starting at $5,000
+• Executive Workshop: Starting at $7,500
+
+==================================================
+ORGANIZATIONAL DEVELOPMENT SERVICES
+==================================================
+• Organizational Development & Training Engagement: Starting at $7,500
+• Leadership & Culture Transformation Program: Starting at $12,000
+• Cyber, Ethics, & Digital Transformation Advisory: Starting at $15,000
+
+==================================================
+FACULTY SERVICES
+==================================================
+• Faculty Development Workshop: Starting at $4,500
+• Faculty Learning Series (3–5 sessions): Starting at $9,500
+• Faculty Mentoring & Scholarly Coaching: $2,500 per cohort
+• Academic Program Design & Review: Starting at $18,000
+
+==================================================
+MEMBERSHIP
+==================================================
+Leadership & Ethics Collective
+• $59/month
+• $599/year
+
+==================================================
+IMPLEMENTATION NOTES
+==================================================
+• Use reusable ProductCard components
+• Store pricing in JSON or via Stripe price IDs
+• External checkout only
+• Ensure responsive, accessible design
+• Track marketplace engagement via analytics
+
