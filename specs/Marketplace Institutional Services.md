@@ -1,10 +1,12 @@
 Marketplace Institutional Services
 Organizational Development & Faculty Services
+
 Dr. William Triplett
 PLATFORM CONTEXT
 Checkout: External (Lemonsqueezy)
 This document adds Organizational Development and Faculty Services to the Marketplace.
 All pricing aligns with medium-to-premium institutional standards.
+
 ORGANIZATIONAL DEVELOPMENT SERVICES
 (Page: /marketplace/organizational-development)
 Organizational Development & Training Engagement
@@ -19,6 +21,7 @@ Cyber, Ethics, & Digital Transformation Advisory (OD Track)
 • Description: Advisory services focused on ethics, cybersecurity leadership, and digital change management
 • Price: Starting at $15,000
 • CTA: Request Engagement
+
 FACULTY SERVICES
 (Page: /marketplace/faculty-services)
 Faculty Development Workshop (Virtual or On-Site)
@@ -37,6 +40,7 @@ Academic Program Design & Review
 • Description: Degree program design, curriculum mapping, accreditation alignment, and interdisciplinary program review
 • Price: Starting at $18,000
 • CTA: Request Proposal
+
 DEVELOPER IMPLEMENTATION NOTES: Very Important!
 • Create dedicated pages for Organizational Development and Faculty Services
 • Use reusable ProductCard components with:
@@ -47,5 +51,7 @@ CTA button linking to contact or Calendly
 • No on-site checkout required
 • Pricing displayed for transparency; final scope handled via proposal
 • Ensure responsive layout and consistent Marketplace styling
+
+
 ONE-PARAGRAPH DEVELOPER BRIEF (INSTITUTIONAL SERVICES): Very Important!
 This update expands the Marketplace to include Organizational Development and Faculty Services targeted to institutional and enterprise clients. Pages should display service descriptions and starting prices, with calls-to-action linking to contact forms or scheduling tools. Development should follow a modular, component-based approach. Follow best practices.

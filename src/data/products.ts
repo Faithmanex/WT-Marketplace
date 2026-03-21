@@ -5,6 +5,7 @@ export interface Category {
   name: string;
   section: SectionId;
   description: string;
+  accent: string;
 }
 
 export interface Product {
@@ -27,22 +28,22 @@ export interface Product {
 
 export const categories: Category[] = [
   // Marketplace
-  { id: 'books', name: 'Books & Publications', section: 'marketplace', description: 'E-books and print-on-demand physical books.' },
-  { id: 'audio', name: 'Audio Products', section: 'marketplace', description: 'Audio reflections, series, and downloadable lectures.' },
-  { id: 'video', name: 'Video Products', section: 'marketplace', description: 'Video lectures and standalone video series.' },
-  { id: 'podcasts', name: 'Podcasts', section: 'marketplace', description: 'Premium podcast access and complete archives.' },
-  { id: 'apparel', name: 'Apparel', section: 'marketplace', description: 'Themed apparel and merchandise.' },
-  { id: 'toolkits', name: 'Toolkits', section: 'marketplace', description: 'Frameworks, templates, and assessment tools.' },
-  { id: 'courses', name: 'Courses', section: 'marketplace', description: 'Comprehensive online masterclasses and guided learning.' },
+  { id: 'books', name: 'Books & Publications', section: 'marketplace', description: 'E-books and print-on-demand physical books.', accent: 'bg-amber-50 text-amber-700 border-amber-200' },
+  { id: 'audio', name: 'Audio Products', section: 'marketplace', description: 'Audio reflections, series, and downloadable lectures.', accent: 'bg-violet-50 text-violet-700 border-violet-200' },
+  { id: 'video', name: 'Video Products', section: 'marketplace', description: 'Video lectures and standalone video series.', accent: 'bg-rose-50 text-rose-700 border-rose-200' },
+  { id: 'podcasts', name: 'Podcasts', section: 'marketplace', description: 'Premium podcast access and complete archives.', accent: 'bg-sky-50 text-sky-700 border-sky-200' },
+  { id: 'apparel', name: 'Apparel', section: 'marketplace', description: 'Themed apparel and merchandise.', accent: 'bg-emerald-50 text-emerald-700 border-emerald-200' },
+  { id: 'toolkits', name: 'Toolkits', section: 'marketplace', description: 'Frameworks, templates, and assessment tools.', accent: 'bg-orange-50 text-orange-700 border-orange-200' },
+  { id: 'courses', name: 'Courses', section: 'marketplace', description: 'Comprehensive online masterclasses and guided learning.', accent: 'bg-indigo-50 text-indigo-700 border-indigo-200' },
   
   // Services
-  { id: 'consulting', name: 'Consulting', section: 'services', description: '1-on-1 strategy sessions and organizational audits.' },
-  { id: 'speaking', name: 'Speaking', section: 'services', description: 'Keynotes and executive workshops for events.' },
-  { id: 'organizational-development', name: 'Organizational Development', section: 'services', description: 'Enterprise culture transformation and training.' },
-  { id: 'faculty-services', name: 'Faculty Services', section: 'services', description: 'Academic program design and scholarly coaching.' },
+  { id: 'organizational-development', name: 'Organizational Development', section: 'services', description: 'Enterprise culture transformation and training.', accent: 'bg-cyan-50 text-cyan-700 border-cyan-200' },
+  { id: 'faculty-services', name: 'Faculty Services', section: 'services', description: 'Academic program design and scholarly coaching.', accent: 'bg-lime-50 text-lime-700 border-lime-200' },
+  { id: 'consulting', name: 'Consulting', section: 'services', description: '1-on-1 strategy sessions and organizational audits.', accent: 'bg-teal-50 text-teal-700 border-teal-200' },
+  { id: 'speaking', name: 'Speaking', section: 'services', description: 'Keynotes and executive workshops for events.', accent: 'bg-pink-50 text-pink-700 border-pink-200' },
 
   // Membership
-  { id: 'membership', name: 'Membership', section: 'membership', description: 'Exclusive collective access and ongoing community.' },
+  { id: 'membership', name: 'Membership', section: 'membership', description: 'Exclusive collective access and ongoing community.', accent: 'bg-purple-50 text-purple-700 border-purple-200' },
 ];
 
 const AUTHOR = "Dr. William Triplett";
@@ -235,6 +236,22 @@ export const products: Product[] = [
     rating: 4.8,
     reviews: 15,
     sales: 85,
+    author: AUTHOR
+  },
+  {
+    id: 'apparel-theology-public',
+    title: '"Theology is Public Work" T-Shirt',
+    description: 'Premium print-on-demand t-shirt.',
+    price: '$34.99',
+    numericPrice: 34.99,
+    category: 'apparel',
+    section: 'marketplace',
+    format: 'Print-on-Demand',
+    ctaText: 'Buy Now',
+    imageUrl: 'https://images.unsplash.com/photo-1576566155518-474618093f8e?auto=format&fit=crop&q=80&w=800',
+    rating: 4.7,
+    reviews: 12,
+    sales: 45,
     author: AUTHOR
   },
 

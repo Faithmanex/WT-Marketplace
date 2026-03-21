@@ -1,13 +1,16 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useParams, Navigate, Link } from 'react-router-dom';
 import { products, categories } from '../data/products';
-import { ChevronRight, ShoppingCart, ExternalLink, Star, StarHalf, CheckCircle, Clock, Shield } from 'lucide-react';
+import { ChevronRight, ShoppingCart, ExternalLink, Star, StarHalf, CheckCircle, Clock, Shield, X } from 'lucide-react';
 
 export const ProductDetailsPage: React.FC = () => {
   const { section, categoryId, productId } = useParams<{ section: string, categoryId: string, productId: string }>();
   
   const product = products.find(p => p.id === productId && p.section === section && p.category === categoryId);
   const category = categories.find(c => c.id === categoryId && c.section === section);
+
+  const [isPaymentOpen, setIsPaymentOpen] = useState(false);
+  const [paymentStatus, setPaymentStatus] = useState<'idle' | 'processing' | 'success'>('idle');
 
   if (!product) {
     return <Navigate to={`/${section || 'marketplace'}`} replace />;
@@ -36,7 +39,7 @@ export const ProductDetailsPage: React.FC = () => {
   return (
     <div className="w-full min-h-screen bg-[#fcfcfc] pb-24">
       {/* Breadcrumbs */}
-      <div className="bg-white border-b border-slate-100 py-6">
+      <div className="bg-white border-b border-slate-100 py-3">
         <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8">
           <nav className="flex items-center text-sm text-slate-500 font-medium">
             <Link to={`/${section}`} className="hover:text-slate-900 transition-colors capitalize">
@@ -52,7 +55,7 @@ export const ProductDetailsPage: React.FC = () => {
         </div>
       </div>
 
-      <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8 pt-5 pb-12">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16">
           
           {/* Main Content (Left) */}
@@ -134,9 +137,9 @@ export const ProductDetailsPage: React.FC = () => {
           </div>
 
           {/* Sidebar (Right) */}
-          <div className="lg:col-span-4 space-y-8">
+          <div className="lg:col-span-4 space-y-8 lg:sticky lg:top-8 self-start">
             {/* Pricing Card */}
-            <div className="bg-white p-8 rounded-3xl shadow-sm border border-slate-100 sticky top-8">
+            <div className="bg-white p-8 rounded-3xl shadow-sm border border-slate-100">
               <div className="mb-8">
                 <span className="text-5xl font-light text-slate-900 tracking-tight">{product.price}</span>
                 {product.numericPrice > 0 && <span className="text-slate-500 ml-2 font-medium uppercase tracking-wider text-sm">USD</span>}
@@ -148,7 +151,7 @@ export const ProductDetailsPage: React.FC = () => {
                     ? 'bg-slate-900 text-white hover:bg-slate-800' 
                     : 'bg-slate-900 text-white hover:bg-slate-800 hover:shadow-lg hover:-translate-y-0.5'
                   }`}
-                onClick={() => alert(`Redirecting to Lemonsqueezy checkout for: ${product.title}`)}
+                onClick={() => setIsPaymentOpen(true)}
               >
                 {isExternal ? <ExternalLink size={20} /> : <ShoppingCart size={20} />}
                 {product.ctaText}
@@ -194,6 +197,85 @@ export const ProductDetailsPage: React.FC = () => {
           
         </div>
       </div>
+      {/* Payment Modal */}
+      {isPaymentOpen && (
+        <div className="fixed inset-0 bg-slate-900/40 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+          <div className="bg-white rounded-3xl p-8 max-w-md w-full shadow-2xl transform transition-all flex flex-col items-center relative">
+            <button 
+              onClick={() => { setIsPaymentOpen(false); setPaymentStatus('idle'); }}
+              className="absolute top-5 right-5 text-slate-400 hover:text-slate-900 transition-colors"
+            >
+              <X size={20} />
+            </button>
+
+            {paymentStatus === 'idle' && (
+              <>
+                <div className="w-16 h-16 bg-slate-50 rounded-2xl flex items-center justify-center mb-5 border border-slate-100">
+                  <Shield className="text-slate-900" size={32} />
+                </div>
+                <h3 className="text-xl font-semibold text-slate-900 mb-1">Secure Checkout</h3>
+                <p className="text-sm text-slate-500 text-center mb-6">By buying <span className="text-slate-900 font-medium">{product.title}</span></p>
+                
+                <div className="w-full space-y-4 mb-8">
+                  <div className="flex justify-between text-sm">
+                    <span className="text-slate-500">Item Price</span>
+                    <span className="text-slate-900 font-medium">{product.price}</span>
+                  </div>
+                  <div className="flex justify-between text-sm font-semibold border-t border-slate-100 pt-4">
+                    <span className="text-slate-900">Total Charged</span>
+                    <span className="text-slate-900">{product.price}</span>
+                  </div>
+                </div>
+
+                <div className="w-full space-y-3">
+                  <button 
+                    onClick={() => {
+                      setPaymentStatus('processing');
+                      setTimeout(() => setPaymentStatus('success'), 1500);
+                    }}
+                    className="w-full py-4 bg-slate-900 text-white rounded-full font-medium hover:bg-slate-800 transition-all flex items-center justify-center gap-2 hover:shadow-lg"
+                  >
+                    Simulate Payment
+                  </button>
+                  <button 
+                    onClick={() => setIsPaymentOpen(false)}
+                    className="w-full py-4 bg-slate-100 text-slate-700 rounded-full font-medium hover:bg-slate-200 transition-colors"
+                  >
+                    Cancel
+                  </button>
+                </div>
+              </>
+            )}
+
+            {paymentStatus === 'processing' && (
+              <div className="flex flex-col items-center py-12">
+                <div className="w-12 h-12 border-4 border-slate-200 border-t-slate-900 rounded-full animate-spin mb-6"></div>
+                <p className="text-slate-800 font-semibold">Processing Simulated Payment...</p>
+                <p className="text-xs text-slate-400 mt-1">Please do not refresh the page</p>
+              </div>
+            )}
+
+            {paymentStatus === 'success' && (
+              <div className="flex flex-col items-center text-center">
+                <div className="w-16 h-16 bg-emerald-50 rounded-full flex items-center justify-center mb-5">
+                  <CheckCircle className="text-emerald-500" size={36} />
+                </div>
+                <h3 className="text-xl font-semibold text-slate-900 mb-1">Simulated Success!</h3>
+                <p className="text-sm text-slate-500 mb-8 max-w-xs">Your payment simulation was processed successfully. Access point unlocked.</p>
+                <button 
+                  onClick={() => {
+                    setIsPaymentOpen(false);
+                    setPaymentStatus('idle');
+                  }}
+                  className="w-full py-4 bg-slate-900 text-white rounded-full font-medium hover:bg-slate-800 transition-colors"
+                >
+                  Return to Product
+                </button>
+              </div>
+            )}
+          </div>
+        </div>
+      )}
     </div>
   );
 };
