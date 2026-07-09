@@ -1,4 +1,5 @@
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import { Analytics } from '@vercel/analytics/react';
 import { Layout } from './components/Layout';
 import { MarketplaceHome } from './pages/MarketplaceHome';
 import { CategoryPage } from './pages/CategoryPage';
@@ -17,6 +18,7 @@ export default function App() {
           <Route path="/:section/:categoryId/:productId" element={<ProductDetailsPage />} />
         </Route>
       </Routes>
+      <Analytics />
     </Router>
   );
 }
